@@ -5,6 +5,7 @@ import LineChartComponent from "../charts/LineChartComponent";
 import BarChartComponent from "../charts/BarChartComponent";
 import IndiaMapComponent from "../charts/IndiaMapComponent";
 import InsightCard from "../InsightCard";
+import KeyInsights from "../KeyInsights";
 
 interface OverviewTabProps {
   selectedMetric: string;
@@ -55,9 +56,9 @@ const OverviewTab = ({ selectedMetric, selectedCities, timeRange }: OverviewTabP
 
       {/* Main Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
+        <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-gray-200/50 dark:border-gray-700/50">
           <CardHeader>
-            <CardTitle>Trend Analysis</CardTitle>
+            <CardTitle className="text-gray-900 dark:text-gray-100">Trend Analysis</CardTitle>
           </CardHeader>
           <CardContent>
             <LineChartComponent 
@@ -67,9 +68,9 @@ const OverviewTab = ({ selectedMetric, selectedCities, timeRange }: OverviewTabP
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-gray-200/50 dark:border-gray-700/50">
           <CardHeader>
-            <CardTitle>City Comparison</CardTitle>
+            <CardTitle className="text-gray-900 dark:text-gray-100">City Comparison</CardTitle>
           </CardHeader>
           <CardContent>
             <BarChartComponent 
@@ -81,9 +82,9 @@ const OverviewTab = ({ selectedMetric, selectedCities, timeRange }: OverviewTabP
       </div>
 
       {/* India Map */}
-      <Card>
+      <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-gray-200/50 dark:border-gray-700/50">
         <CardHeader>
-          <CardTitle>Geographic Distribution</CardTitle>
+          <CardTitle className="text-gray-900 dark:text-gray-100">Geographic Distribution</CardTitle>
         </CardHeader>
         <CardContent>
           <IndiaMapComponent 
@@ -92,6 +93,15 @@ const OverviewTab = ({ selectedMetric, selectedCities, timeRange }: OverviewTabP
           />
         </CardContent>
       </Card>
+
+      {/* Key Insights Section */}
+      <div>
+        <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">Key Development Insights</h2>
+        <KeyInsights 
+          selectedCities={selectedCities}
+          selectedMetric={selectedMetric}
+        />
+      </div>
     </div>
   );
 };
