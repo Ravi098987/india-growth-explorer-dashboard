@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import CitySelector from "./CitySelector";
 import TimeRangeSlider from "./TimeRangeSlider";
 import ExportMenu from "./ExportMenu";
+import ThemeToggle from "./ThemeToggle";
 
 interface NavbarProps {
   selectedCities: string[];
@@ -20,10 +21,10 @@ const Navbar = ({ selectedCities, setSelectedCities, timeRange, setTimeRange }: 
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
-    <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 px-6 py-4 sticky top-0 z-50 shadow-sm">
+    <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-700/50 px-6 py-4 sticky top-0 z-50 shadow-sm transition-colors duration-300">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-6">
-          <SidebarTrigger className="hover:bg-gray-100 p-2 rounded-lg transition-colors" />
+          <SidebarTrigger className="hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-lg transition-colors" />
           <div className="flex items-center space-x-4">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-600 via-purple-600 to-green-600 rounded-xl flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-lg">DD</span>
@@ -32,9 +33,9 @@ const Navbar = ({ selectedCities, setSelectedCities, timeRange, setTimeRange }: 
               <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Decoding Development
               </h1>
-              <p className="text-sm text-gray-500 font-medium">India Growth Metrics Dashboard</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">India Growth Metrics Dashboard</p>
             </div>
-            <Badge variant="secondary" className="ml-2 bg-green-100 text-green-700">
+            <Badge variant="secondary" className="ml-2 bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
               Live Data
             </Badge>
           </div>
@@ -47,7 +48,7 @@ const Navbar = ({ selectedCities, setSelectedCities, timeRange, setTimeRange }: 
               placeholder="Search metrics, cities, or insights..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-12 bg-gray-50/50 border-gray-200 focus:bg-white transition-colors"
+              className="pl-12 bg-gray-50/50 dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 focus:bg-white dark:focus:bg-gray-800 transition-colors"
             />
           </div>
           <CitySelector 
@@ -62,13 +63,14 @@ const Navbar = ({ selectedCities, setSelectedCities, timeRange, setTimeRange }: 
             setTimeRange={setTimeRange}
           />
           <ExportMenu />
+          <ThemeToggle />
           <Button variant="ghost" size="sm" className="relative">
             <Bell className="w-5 h-5" />
             <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-red-500 text-white text-xs">
               3
             </Badge>
           </Button>
-          <Button variant="ghost" size="sm" className="bg-gray-100 hover:bg-gray-200">
+          <Button variant="ghost" size="sm" className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700">
             <User className="w-5 h-5" />
           </Button>
         </div>
